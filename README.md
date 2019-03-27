@@ -1,6 +1,6 @@
 # form6
 
-Small client-side extension for HTML5 forms that adds useful features, like enctype="application/json" and named fieldsets for nested data.
+Small client-side extension for HTML5 forms that adds the useful feature of named fieldsets for nested data.
 
 ## Rationale
 
