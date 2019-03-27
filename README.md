@@ -50,7 +50,7 @@ This is how I felt `<fieldset>` should always have worked. As it stands, the `na
 
 Output:
 
-```
+```html
 <form>
   <fieldset name="data">
     <legend>User App Data</legend>
