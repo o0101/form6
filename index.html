@@ -1,0 +1,30 @@
+<form>
+  <input name=username>
+  <fieldset name=fullname>
+    <input name=first>
+    <input name=last>
+  </fieldset>
+  <fieldset name=state>
+    <fieldset name=history>
+      <fieldset name=0>
+        <input type=url name=url>
+        <input type=text name=title>
+      </fieldset>
+      <fieldset name=1>
+        <input type=url name=url>
+        <input type=text name=title>
+      </fieldset>
+    </fieldset>
+    <input name=id>
+    <fieldset name=session>
+      <input name=uuid>
+      <input name=username>
+    </fieldset>
+  </fieldset>
+</form>
+<script type=module>
+  import {enhanceForm} from './index.js';
+
+  enhanceForm(document.querySelector('form'));
+</script>
+

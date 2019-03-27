@@ -1,0 +1,23 @@
+{
+  "name": "form6",
+  "version": "1.0.0",
+  "description": "Enhance HTML5 forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "serve -p 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crislin2046/form6.git"
+  },
+  "keywords": [
+    "forms",
+    "HTML5"
+  ],
+  "author": "@dosy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crislin2046/form6/issues"
+  },
+  "homepage": "https://github.com/crislin2046/form6#readme"
+}

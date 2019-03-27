@@ -1,4 +1,4 @@
-function enhanceForm(formEl) {
+export function enhanceForm(formEl) {
   const walker = document.createTreeWalker(formEl, NodeFilter.SHOW_ELEMENT);
   const fieldStack = [];
   while(walker.nextNode()) {
@@ -16,14 +16,18 @@ function enhanceForm(formEl) {
       case "fieldset": {
         // push name to stack
         fieldStack.push(node);
+        break;
       }
       default: {
         // convert name to nested
         const fieldNames = fieldStack.map(node => node.getAttribute('name'));
-        const fieldPath = `${fieldNames.shift()}${
-          fieldNames.map(name => `[${name}]`)
-        }[${node.getAttribute('name')}]`;
-        node.setAttribute('name', fieldPath);      
+        if ( fieldNames.length ) {
+          const fieldPath = `${fieldNames.shift()}${
+            fieldNames.map(name => `[${name}]`).join('')
+          }[${node.getAttribute('name')}]`;
+          node.setAttribute('name', fieldPath);      
+        }
+        break;
       }
     }
   }
