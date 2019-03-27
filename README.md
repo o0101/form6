@@ -6,6 +6,8 @@ Small client-side extension for HTML5 forms that adds the useful feature of name
 
 This is how I felt `<fieldset>` should always have worked. As it stands, the `name` attribute on the tag has no effect on form submission values.
 
+This changes all that.
+
 ## usage
 
 ```html
