@@ -31,9 +31,4 @@ export function enhanceForm(formEl) {
       }
     }
   }
-  if ( formEl.enctype == 'application/json' ) {
-    formEl.addEventListener('submit', submission => {
-      // convert fields to JSON object and programmatically send with fetch
-    });
-  }
 }
