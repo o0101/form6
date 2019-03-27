@@ -84,6 +84,10 @@ Output:
 </form>
 ```
 
+## What I like about this
+
+I like how this permits the structuring of HTML for data entry in a format similar to the format the data is expected. Suggesting a closer model between the interface and the data model, and I also like how it uses HTML as a data carrying language (reminiscient of XML).
+
 
 
 
