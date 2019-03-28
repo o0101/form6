@@ -1,6 +1,6 @@
 {
   "name": "form6",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Enhance HTML5 forms",
   "main": "index.js",
   "scripts": {
