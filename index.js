@@ -31,4 +31,98 @@ export function enhanceForm(formEl) {
       }
     }
   }
+
+  if ( formEl.getAttribute('enctype') == "application/json" ) {
+    formEl.addEventListener('submit', async submission => {
+      submission.preventDefault();
+      const fields = [...formEl.querySelectorAll('[name]:not(fieldset)')];
+      const data = {};
+      fields.forEach(f => {
+        let value = 'default';
+        const path = f.name.split(/[\[\]]/g).map(l => l.trim()).filter(l => l.length);
+        switch(f.localName) {
+          case "select": {
+            break;
+          }
+          case "button": {
+            break;
+          }
+          case "textarea" : {
+            break;
+          }
+          default: {
+            value = f.value || 'novalue';
+          }
+        }
+        setPropertyAtPath(data, path, value);
+      });
+      const url = formEl.getAttribute('action');
+      const method = formEl.getAttribute('method');
+      try {
+        const response = await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': formEl.getAttribute('enctype')
+          },
+          body: JSON.stringify(data)
+        });
+        const text = await response.text();
+        console.log("response", text);
+      } catch(e) {
+        console.warn(`Error making ${method} request to ${url}: ${e + e.stack}`);
+      }
+    }, {capture:true});
+  }
+}
+
+function setPropertyAtPath(data, path, value) {
+  let currentObject = data;
+  let link = path[0];
+  if ( path.length == 1 ) {
+    data[link] = value;
+  } else {
+    let last = {link, type: getTypeOf(link)};
+    for (let i = 1; i < path.length; i++) {
+      link = path[i];
+      const current = {link, type: getTypeOf(link)};
+
+      let nextObject;
+      if ( ! currentObject[last.link] ) {
+        nextObject = getNextObject(current);
+        currentObject[last.link] = nextObject;
+      } else {
+        nextObject = currentObject[last.link]
+      }
+
+      currentObject = nextObject;
+      last = current;
+    }
+    currentObject[last.link] = value;
+  }
+}
+
+function getTypeOf(link) {
+  const numberValue = parseInt(link); 
+  let linkType;
+  if ( Number.isInteger(numberValue) ) {
+    linkType = "array";
+  } else {
+    linkType = "object";
+  }
+  return linkType;
+}
+
+function getNextObject(lastLink) {
+  let nextObject;
+  switch(lastLink.type) {
+    case "array": {
+      nextObject = [];
+      break;
+    }
+    case "object": {
+      nextObject = {};
+      break;
+    }
+  }
+  return nextObject;
 }

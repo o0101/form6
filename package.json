@@ -4,7 +4,7 @@
   "description": "Enhance HTML5 forms",
   "main": "index.js",
   "scripts": {
-    "test": "serve -p 8080"
+    "test": "nodemon test_server.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/crislin2046/form6/issues"
   },
-  "homepage": "https://github.com/crislin2046/form6#readme"
+  "homepage": "https://github.com/crislin2046/form6#readme",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10"
+  }
 }
